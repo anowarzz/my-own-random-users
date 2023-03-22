@@ -29,7 +29,7 @@
          "gender": "female",
          "contact": "(781) 051-4023",
          "address": "Forest Ranch, California(CA), 95942",
-         "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyHto0IghIq6kCELdj0RQoy5KE3hakuPXgv4aTBanl&s"
+         "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0oxFiAcnIO5hLwv-Rx954at65gZ5h1LR2mQErHyJ7Mw&s"
     },
     {
         "id": 5,
@@ -46,5 +46,37 @@
          "contact": "607 121-2430",
          "address": "New Smyrna Beach, Florida(FL), 32168",
          "photoURL": "https://st1.latestly.com/wp-content/uploads/2019/10/Phoebe-Buffay.jpg"
+    },
+    {
+        "id": 7,
+         "name": "Walter White",
+         "gender": "male",
+         "contact": "(748) 456-7040",
+         "address": "Salem, Massachusetts(MA), 01970",
+         "photoURL": "https://c4.wallpaperflare.com/wallpaper/270/151/624/breaking-bad-actors-bryan-cranston-walter-white-men-with-glasses-2992x4016-animals-horses-hd-art-wallpaper-preview.jpg"
+    },
+    {
+        "id": 8,
+         "name": "Jessy PinkMan",
+         "gender": "male",
+         "contact": "(383) 933-9521",
+         "address": "SMount Vernon, Washington(WA), 98274",
+         "photoURL": "https://images2.alphacoders.com/683/683515.jpg"
+    },
+    {
+        "id": 9,
+         "name": "Dexter Morgan",
+         "gender": "male",
+         "contact": "(471) 346-2656",
+         "address": "Ponca City, Oklahoma(OK), 74604",
+         "photoURL": "https://images8.alphacoders.com/675/675558.jpg"
+    },
+    {
+        "id": 10,
+         "name": "Lagartha Lothbrok",
+         "gender": "female",
+         "contact": "(355) 348-3087",
+         "address": "Nashua, New Hampshire(NH), 03064",
+         "photoURL": "https://images8.alphacoders.com/675/675558.jpg"
     }
 ]

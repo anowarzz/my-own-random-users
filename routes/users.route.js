@@ -4,7 +4,23 @@ const fs = require('fs');
 
 
 router.get('/random', (req, res) => {
-    res.send('a random user is here')
+
+    fs.readFile('data/users.json', (err, data) => {
+    if(err){
+        res.send('failed to load user')
+        console.log(err);
+    }  
+    else{
+
+        const users = JSON.parse(data)
+        const randomIndex = Math.floor(Math.random() * users.length)
+       const randomUser = users[randomIndex]
+       res.status(200).send(randomUser);
+       
+      
+    } 
+    })
+
 } )
 
 
