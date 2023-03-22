@@ -1,44 +1,12 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const fs = require('fs');
+const path = require("path");
+const usersController = require('../controllers/users.controller.js')
 
 
-router.get('/random', (req, res) => {
+router.get("/random", usersController.getOneRandomUser );
 
-    fs.readFile('data/users.json', (err, data) => {
-    if(err){
-        res.send('failed to load user')
-        console.log(err);
-    }  
-    else{
+router.get("/all", usersController.getAllUsers);
 
-        const users = JSON.parse(data)
-        const randomIndex = Math.floor(Math.random() * users.length)
-       const randomUser = users[randomIndex]
-       res.status(200).send(randomUser);
-       
-      
-    } 
-    })
+module.exports = router;
 
-} )
-
-
-router.get('/all', (req, res) => {
-    res.send('all the users are here')
-} )
-
-
-module.exports = router ;
-
-
-
-
-
-
-// const numbers = [4, 5, 6, 7, 8, 9]
-
-// const randomIndex =  Math.floor(Math.random() * numbers.length) ;
-
-
-// console.log(randomNumber);

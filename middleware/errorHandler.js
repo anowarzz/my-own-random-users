@@ -1,6 +1,8 @@
-const errorHandler = (error, res, req, next) => {
+const errorHandler = (error,req,res, next) => {
   if (error) {
-    res.send("Something went wrong");
+    res.send(error.message);
+    console.log(error);
+    
   }
 };
 
