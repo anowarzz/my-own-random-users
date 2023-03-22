@@ -1,4 +1,4 @@
-const sendProperResponse = (status = "unknown", message = "", data = []) =>{
+const sendProperResponse = (status = "", message = "", data = []) =>{
     return {
         status: status,
         message: message,
