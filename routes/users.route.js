@@ -4,6 +4,18 @@ const path = require("path");
 const usersController = require('../controllers/users.controller.js')
 
 
+
+
+router.get('/', (req, res) => {
+
+    res.status(400).json({message: "Use the following url structure to get proper data", 
+    "/user/random": "To get a random user",
+    "/user/all": "To get all users",
+    "/user/limit?q=4": "To get total 4 users",
+})
+})
+
+
 // Get a random user
 router.get("/random", usersController.getOneRandomUser );
 
