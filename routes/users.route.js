@@ -19,5 +19,8 @@ router.post('/save', usersController.saveAUser) ;
 // Update a user information based on the id
 router.patch('/update/:id', usersController.updateAUser)
 
+// Delete a user from the user list
+router.delete('/delete/:id', usersController.deleteAUser)
+
 module.exports = router;
 

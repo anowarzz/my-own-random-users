@@ -53,7 +53,7 @@ module.exports.getSpecificNumberOfUsers = (req, res) => {
         console.log(users.length, limit);
 
         const limitedUsers = users.slice(0, limit);
-        res.send(sendProperResponse(200, `${limit} users of Total ${users.length}`, users));
+        res.send(sendProperResponse(200, `${limit} users of Total ${users.length}`, limitedUsers));
       }
     });
   } else {
@@ -187,3 +187,49 @@ else{
 
 
 // =====>  Deleting a user based on user id =======> /user/delete/:id
+
+module.exports.deleteAUser = (req, res) => {
+
+  const id = req.params.id ;
+  console.log(id);
+  
+
+  if(!id){
+    res.status(400).json({message: "Please mention a user id", example:  "user/update/1"})
+  }
+
+else{
+  // reading the user json file from data folder using fs modules
+fs.readFile("./data/users.json", (err, data) => {
+  if (err) {
+    res.status(500).send("failed to load users");
+    console.log(err);
+  } 
+  
+  else {
+    const users = JSON.parse(data)
+    const deletingUser = users.find(user => user.id === Number(id))
+    const remainingUsers = users.filter(user => user.id !== Number(id))
+  
+
+    if(!deletingUser){
+      res.status(400).json({message: "No user found with that id"})
+    }
+
+
+    if(remainingUsers){
+
+// Writing the updated users into the file system
+fs.writeFile("./data/users.json", JSON.stringify(remainingUsers), (err) => {
+  if(err){
+    console.log("Failed to write file");
+  }
+  console.log("Data updated successfully");
+  res.send(sendProperResponse(200,"user deleted successfully", remainingUsers))
+})
+
+}
+    }
+})
+}
+}
