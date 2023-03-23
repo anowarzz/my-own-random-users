@@ -20,14 +20,14 @@ Get a random user (Tv-series star 😁) profile with basic details for each requ
 <https://random-stars.onrender.com/user/limit?q=4>
 
 #### Save a user to the user list  (```Post Method```)
-https://random-stars.onrender.com/user/save
+random-stars.onrender.com/user/save
 
 
 #### Update the information of a user by user id  (```Patch Method```) 
-https://random-stars.onrender.com/user/update/2
+random-stars.onrender.com/user/update/2
 
 #### Delete a user based on user id  (```Delete Method```)
-https://random-stars.onrender.com/user/delete/9
+random-stars.onrender.com/user/delete/9
 
 
 
