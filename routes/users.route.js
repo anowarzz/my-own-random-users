@@ -16,5 +16,8 @@ router.get("/limit", usersController.getSpecificNumberOfUsers);
 // Save a user to the the user array
 router.post('/save', usersController.saveAUser) ;
 
+// Update a user information based on the id
+router.patch('/update/:id', usersController.updateAUser)
+
 module.exports = router;
 

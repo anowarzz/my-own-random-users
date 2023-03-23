@@ -6,7 +6,7 @@ module.exports.getOneRandomUser = (req, res) => {
   // reading the user json file from data folder using fs modules
   fs.readFile("./data/users.json", (err, data) => {
     if (err) {
-      res.status(500).send("failed to load user");
+      res.status(500).send("Something Went Wrong");
       console.log(err);
     } else {
       const users = JSON.parse(data);
@@ -22,7 +22,7 @@ module.exports.getAllUsers = (req, res) => {
   // reading the user json file from data folder using fs modules
   fs.readFile("./data/users.json", (err, data) => {
     if (err) {
-      res.status(500).send("failed to load user");
+      res.status(500).send("Something Went Wrong");
       console.log(err);
     } else {
       const users = JSON.parse(data);
@@ -46,7 +46,7 @@ module.exports.getSpecificNumberOfUsers = (req, res) => {
     // reading the user json file from data folder using fs modules
     fs.readFile("./data/users.json", (err, data) => {
       if (err) {
-        res.status(500).send("failed to load user");
+        res.status(500).send("Something Went Wrong");
         console.log(err);
       } else {
         const users = JSON.parse(data);
@@ -124,3 +124,66 @@ module.exports.saveAUser = (req, res) => {
     });
   }
 };
+
+
+//=====> Updating the information of a user =======>  /user/update/:id
+
+module.exports.updateAUser = (req, res) => {
+
+  const id = req.params.id ;
+  const updatedInfo = req.body ;
+
+console.log(updatedInfo);
+
+  
+
+  if(!id){
+    res.status(400).json({message: "Please mention a user id", example:  "user/update/1"})
+  }
+
+  //  if(Object.keys(updatedInfo.length === 0)){
+  //   res.status(400).json({message:"Please send the information you want to update"})
+  // }
+
+else{
+// reading the user json file from data folder using fs modules
+fs.readFile("./data/users.json", (err, data) => {
+  if (err) {
+    res.status(500).send("failed to load users");
+    console.log(err);
+  } 
+  
+  else {
+    const users = JSON.parse(data)
+    const updatingUser = users.find(user => user.id === Number(id))
+
+    if(updatingUser){
+// updating the info of the user if any changes is available in updated info
+updatingUser.name = updatedInfo.name ? updatedInfo.name : updatingUser.name ;
+updatingUser.gender = updatedInfo.gender ? updatedInfo.gender : updatingUser.gender ;
+updatingUser.contact = updatedInfo.contact ? updatedInfo.contact : updatingUser.contact ;
+updatingUser.address = updatedInfo.address ? updatedInfo.address : updatingUser.address ;
+updatingUser.photoURL = updatedInfo.photoURL ? updatedInfo.photoURL : updatingUser.photoURL ;
+
+
+
+// Writing the updated users into the file system
+fs.writeFile("./data/users.json", JSON.stringify(users), (err) => {
+  if(err){
+    console.log("Failed to write file");
+  }
+  console.log("Data updated successfully");
+  res.send(sendProperResponse(200,"User updated successfully", updatingUser))
+})
+
+}
+else{
+  res.status(404).json({message: "No user found with the provided id" }) 
+} }
+
+})
+}}
+
+
+
+// =====>  Deleting a user based on user id =======> /user/delete/:id
